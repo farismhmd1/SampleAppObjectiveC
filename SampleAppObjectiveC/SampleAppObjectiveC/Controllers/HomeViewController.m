@@ -36,11 +36,14 @@
 {
     [self.APIServiceObj apiToGetEmployeeData:url completionHandler:^(NSArray<QTEmployeeData *> * _Nonnull empData, NSError * _Nonnull error) {
         
-        if (error == nil) {
+        if (empData != nil) {
             
             self.emplyeeData = [[NSMutableArray alloc] initWithArray:empData];
             NSLog(@"data count %lu", (unsigned long)self.emplyeeData.count);
             
+        }
+        else {
+            NSLog(@"Some error occured. data not loaded");
         }
     }];
     
